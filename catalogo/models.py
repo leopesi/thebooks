@@ -25,6 +25,8 @@ class Book(models.Model):
         return reverse('book-detail', args=[str(self.id)])
 
 
+
+
 class Author(models.Model):
     """Model representando o Autor."""
     first_name = models.CharField(max_length=100)
@@ -41,3 +43,6 @@ class Author(models.Model):
 
     def __str__(self):
         return f'{self.last_name}, {self.first_name}'
+
+    class Meta:
+        ordering = ['last_name']

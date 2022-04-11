@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+
+    {% endif %}
+  {% endif %}
+<!-- Login  -->
+<div class="container">
+    <div class="row">
+        {% include 'sidebar.html' %}
+        <div class="col-md-9 mt-3 left">
+            <div class="card mb-3">
+                <div class="justify-content-center align-items-center row">
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            <h2 class="card-title">Login</h2>
+                            <div class="row">
+                                <div class="col-md-6 mt-3 left">
+                                    <div> {{ form.username.label_tag }}</div>
+                                    <div>{{ form.username }}</div>
+                                </div>
+                                <div class="col-md-6 mt-3 left">
+                                    <div>{{ form.password.label_tag }}</div>
+                                    <div>{{ form.password }}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3 left">
+                                <input type="submit" class="btn btn-primary" value="login" />
+                                <input type="hidden" class="form-control" name="next" value="{{ next }}" />
+                                <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+                            </div>
+                        </div>
+                    </form>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+

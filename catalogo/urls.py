@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import ping
+from .views import index, BookListView, book_detail_view
 
 urlpatterns = [
-    path('catalogo', ping, name="ping")
+    path('', index, name='index'),
+    path('books/', BookListView.as_view(), name='books'),
+    path('book/<int:pk>', book_detail_view, name='book-detail'),
 ]
