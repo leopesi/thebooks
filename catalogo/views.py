@@ -8,7 +8,7 @@ def index(request):
     # Generate counts of some of the main objects
     num_books = Book.objects.all().count()
     # The 'all()' is implied by default.
-    authors = Author.objects.get(id=1)
+    authors = Author.objects.all().count()
 
     context = {
         'num_books': num_books,
@@ -20,6 +20,9 @@ def index(request):
 
 class BookListView(generic.ListView):
     model = Book
+    template_name = 'book_list.html'
+    context_object_name = 'list_books'
+    paginate_by = 10
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get the context
         context = super(BookListView, self).get_context_data(**kwargs)
@@ -27,7 +30,23 @@ class BookListView(generic.ListView):
         context['some_data'] = 'This is just some data'
         return context
 
-def book_detail_view(request, primary_key):
-    book = get_object_or_404(Book, pk=primary_key)
-    return render(request, 'catalogo/book_detail.html', context={'book': book})
+class AuthorListView(generic.ListView):
+    model = Author
+    template_name = 'author_list.html'
+    context_object_name = 'list_authors'
+    paginate_by = 10
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get the context
+        context = super(AuthorListView, self).get_context_data(**kwargs)
+        # Create any data and add it to the context
+        context['some_data'] = 'This is just some data'
+        return context
 
+class BookDetailView(generic.DetailView):
+    model = Book
+    template_name = 'book_detail.html'
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
+    #context_object_name = 'authors'
+    template_name = 'author_detail.html'
