@@ -19,55 +19,39 @@
               <img class="avatar avatar-xxl shadow-xl position-relative z-index-2" src="/static/assets/img/caneta.jpg" alt="" loading="lazy">
       </div>
       <div class="row py-6">
+          <div class="">
 
-          <h1>Lista de Livros</h1>
-          {% if list_books %}
-          <ul>
-            {% for book in list_books %}
-              <li>
-                <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
-              </li>
-            {% endfor %}
-          </ul>
-          {% else %}
-            <p>There are no books in the library.</p>
-          {% endif %}
-
-          <div class="col-md-1 mt-3 right">
-              {% if user.is_authenticated %}
-              <div class="row">
-                  <div class="columnar col-md-6 mt-3">
-                      <a href="{}" >
-                          <span class="fa fa-pencil" ></span>
-                      </a>
+              <h2>Lista de Livros</h2>
+              {% if list_books %}
+              <div class="card-body">
+                {% for book in list_books %}
+                  <div class="columnar col-md-11 mt-2">
+                    <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
                   </div>
-                  <div class="columnar col-md-6 mt-3">
-                      <a href="{}" class="confirm-delete" title="Delete" data-toggle="modal" data-target="#confirmDeleteModal" id="deleteButton{{post.slug}}">
-                          <i class="fa fa-trash text-danger"></i>
-                      </a>
-                  </div>
+                {% endfor %}
               </div>
               {% else %}
+                <p>Nenhum livro foi cadastrado ainda.</p>
               {% endif %}
-          </div>
 
-          {% block pagination %}
-                  {% if is_paginated %}
-                      <div class="pagination">
-                          <span class="page-links">
-                              {% if page_obj.has_previous %}
-                                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
-                              {% endif %}
-                              <span class="page-current">
-                                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              {% block pagination %}
+                      {% if is_paginated %}
+                          <div class="pagination">
+                              <span class="page-links">
+                                  {% if page_obj.has_previous %}
+                                      <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                                  {% endif %}
+                                  <span class="page-current">
+                                      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                                  </span>
+                                  {% if page_obj.has_next %}
+                                      <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                                  {% endif %}
                               </span>
-                              {% if page_obj.has_next %}
-                                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
-                              {% endif %}
-                          </span>
-                      </div>
-                  {% endif %}
-          {% endblock %}
+                          </div>
+                      {% endif %}
+              {% endblock %}
+          </div>
 
       </div>
     </div>

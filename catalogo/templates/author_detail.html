@@ -1,14 +1,55 @@
-{% extends "base_generic.html" %}
-
+{% extends "layouts/base.html" %}
+{% load static %}
 {% block content %}
-  <h1>{{ author }}</h1>
-  <div style="margin-left:20px;margin-top:20px">
-<h4>Books</h4>
 
-<dl>
-{% for book in author.book_set.all %}
-  <dt><a href="{% url 'book-detail' book.pk %}">{{book}}</a> ({{book.pages}} páginas)</dt>
-  <dd>{{book.summary}}</dd>
-{% endfor %}
-</dl>
-{% endblock %}
+<body class="presentation-page bg-gray-200">
+{% include 'includes/navigation-transparent.html' %}
+
+<header>
+  <div class="page-header min-height-400" style="background-image: url('/static/assets/img/city-profile.jpg');" loading="lazy">
+    <span class="mask bg-gradient-dark opacity-8"></span>
+  </div>
+</header>
+
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
+  <!-- START Testimonials w/ user image & text & info -->
+   <section class="py-sm-7 py-5 position-relative">
+     <div class="container">
+       <div class="mt-n8 mt-md-n9 text-center">
+         <img class="avatar avatar-xxl shadow-xl position-relative z-index-2" src="/static/assets/img/caneta.jpg" alt="" loading="lazy">
+       </div>
+                <div class="row py-6">
+                  <h2>{{ author }}</h2>
+                            <div class="">
+                              <dl>
+                                {% for book in author.book_set.all %}
+                                  <div class="card-body">
+                                    <div class="columnar col-md-8 mt-2">
+                                      <dt><a href="{% url 'book-detail' book.pk %}">{{book}}</a> </dt>
+                                    </div>
+                                    <div class="columnar ">
+                                      <dt>({{book.pages}} páginas)</dt>
+                                    </div>
+                                    <div class="columnar col-md-12 mt-2">
+                                      <dd>{{book.summary}}</dd>
+                                    </div>
+                                  </div>
+                                {% endfor %}
+                              </dl>
+                            </div>
+                </div>
+      </div>
+    </section>
+  <!-- END Testimonials w/ user image & text & info -->
+</div>
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
+<!-- START Blogs w/ 4 cards w/ image & text & link -->
+
+</div>
+    <!-- END Blogs w/ 4 cards w/ image & text & link -->
+
+
+
+{%endblock%}
+
+

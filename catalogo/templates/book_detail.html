@@ -1,11 +1,46 @@
-{% extends "base_generic.html" %}
-
+{% extends "layouts/base.html" %}
+{% load static %}
 {% block content %}
-  <h1>{{ book.title }}</h1>
 
-  <p><strong>Autor:</strong> <a href="{% url 'author-detail' book.author.pk %}">{{ book.author }}</a></p>
-  <p><strong>Sumário:</strong> {{ book.summary }}</p>
-  <p><strong>Páginas:</strong> {{ book.pages}}</p>
-  <p><strong>Gênero:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+<body class="presentation-page bg-gray-200">
+{% include 'includes/navigation-transparent.html' %}
 
-{% endblock %}
+<header>
+  <div class="page-header min-height-400" style="background-image: url('/static/assets/img/city-profile.jpg');" loading="lazy">
+    <span class="mask bg-gradient-dark opacity-8"></span>
+  </div>
+</header>
+
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
+  <!-- START Testimonials w/ user image & text & info -->
+   <section class="py-sm-7 py-5 position-relative">
+    <div class="container">
+      <div class="mt-n8 mt-md-n9 text-center">
+              <img class="avatar avatar-xxl shadow-xl position-relative z-index-2" src="/static/assets/img/caneta.jpg" alt="" loading="lazy">
+      </div>
+      <div class="row py-6">
+        <div class="columnar col-md10 mt-1">
+          <h3>{{ book.title }}</h3>
+        </div>
+        <div class="">
+          <div class="card-body">
+            <p><strong>Autor:</strong> <a href="{% url 'author-detail' book.author.pk %}">{{ book.author }}</a></p>
+            <p><strong>Sumário:</strong> {{ book.summary }}</p>
+            <p><strong>Páginas:</strong> {{ book.pages}}</p>
+            <p><strong>Gênero:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END Testimonials w/ user image & text & info -->
+</div>
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
+<!-- START Blogs w/ 4 cards w/ image & text & link -->
+
+</div>
+    <!-- END Blogs w/ 4 cards w/ image & text & link -->
+
+
+
+{%endblock%}
