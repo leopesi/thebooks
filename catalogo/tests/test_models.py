@@ -1,7 +1,4 @@
 from django.test import TestCase
-
-# Create your tests here.
-
 from catalogo.models import Author
 
 
