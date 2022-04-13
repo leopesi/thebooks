@@ -29,63 +29,63 @@
                 </div>
               </div>
               <div class="card-body">
-
                 <form id="contact-form" autocomplete="off" method="post">
-                                            {% csrf_token %}
-                                            <div class="card-body">
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-12 ps-md-2">
-                                                            <div class="input-group input-group-static mb-4">
-                                                                <div class="col-6 form-select-line-height">
-                                                                    <p class="card-text ">Usuário: {{ request.user  }}</
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 ps-md-2">
-                                                            <div class="input-group input-group-static mb-4">
-                                                                <div class="col-12">
-                                                                    {{ form.title|as_crispy_field }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 ps-md-2">
-                                                            <div class="col-6">
-                                                                {{ form.author|as_crispy_field }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 ps-md-2">
-                                                            <div class="input-group input-group-static mb-4">
-                                                                <div class="col-12">
-                                                                    {{ form.pages|as_crispy_field }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 ps-md-2">
-                                                            <div class="input-group input-group-static mb-4">
-                                                                <div class="col-12">
-                                                                    {{ form.genre|as_crispy_field }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12 ps-md-2">
-                                                            <div class="input-group input-group-static mb-4">
-                                                                <div class="col-12">
-                                                                    <p class="card-text ">{{ form.summary|as_crispy_field|safe }}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-12 text-center">
-                                                                <button type="submit" class="btn bg-gradient-primary mt-3 mb-0">Postar</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                      </form>
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12 ps-md-2">
+                                    <div class="input-group input-group-static mb-4">
+                                        <div class="col-6 form-select-line-height">
+                                            <p class="card-text ">Usuário: {{ request.user  }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 ps-md-2">
+                                    <div class="input-group input-group-static mb-4">
+                                        <div class="col-12">
+                                            {{ form.title|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 ps-md-2">
+                                    <div class="col-6">
+                                        {{ form.author|as_crispy_field }}
+                                        <a class="nav-link nav-link-icon me-2"
+                                           href="{% url 'author-create' %}">
+                                            <i class="fa fa-plus-circle me-1"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 ps-md-2">
+                                    <div class="input-group input-group-static mb-4">
+                                        <div class="col-12">
+                                            {{ form.pages|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 ps-md-2">
+                                    <div class="input-group input-group-static mb-4">
+                                        <div class="col-12">
+                                            {{ form.genre|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 ps-md-2">
+                                    <div class="input-group input-group-static mb-4">
+                                        <div class="col-12">
+                                            <p class="card-text ">{{ form.summary|as_crispy_field|safe }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <button type="submit" class="btn bg-gradient-primary mt-3 mb-0">Postar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
               </div>
             </div>
           </div>
