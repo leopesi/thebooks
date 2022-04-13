@@ -17,6 +17,11 @@ def index(request):
     }
     return render(request, 'index.html', context=context)
 
+class MyBookListView(generic.ListView):
+    queryset = Book.objects.all()
+    context_object_name = 'mybooks'
+    template_name = 'mybooks.html'
+
 class AuthorListView(generic.ListView):
     """Listar autores."""
     model = Author

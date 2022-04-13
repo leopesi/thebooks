@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import index, BookListView, BookDetailView, BookCreate, BookUpdate, BookDelete, AuthorListView, AuthorDetailView, AuthorCreate, AuthorUpdate, AuthorDelete
+from .views import index, BookListView, MyBookListView, BookDetailView, BookCreate, BookUpdate, BookDelete, AuthorListView, AuthorDetailView, AuthorCreate, AuthorUpdate, AuthorDelete
 urlpatterns = [
 
     path('', index, name='index'),
 
     path('books/', BookListView.as_view(), name='books'),
+    path('book/mybooks/', MyBookListView.as_view(), name='mybooks'),
     path('book/<int:pk>', BookDetailView.as_view(), name='book-detail'),
     path('book/create/', BookCreate.as_view(), name='book-create'),
     path('book/<int:pk>/update/', BookUpdate.as_view(), name='book-update'),
