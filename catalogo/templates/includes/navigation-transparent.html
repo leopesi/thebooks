@@ -17,28 +17,28 @@
       <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 ms-lg-12 ps-lg-5" id="navigation">
         <ul class="navbar-nav navbar-nav-hover ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">
+            <a class="nav-link" href="{% url 'books' %}">
               <i class="material-icons opacity-6 me-2 text-md">dashboard</i>
-              Sobre
+              Livros
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog' %}">
+            <a class="nav-link" href="{% url 'authors' %}">
               <i class="material-icons opacity-6 me-2 text-md">view_day</i>
-              Postagens Publicadas</a>
+              Autores</a>
           </li>
 
           {% if request.user.is_authenticated %}
 
           <li class="nav-item">
-                <a class="nav-link" href="{% url 'post_create' %}">
+                <a class="nav-link" href="{}">
                   <i class="material-icons opacity-6 me-2 text-md">article</i>
                   Faça sua Postagens</a>
 
           </li>
 
           <li class="nav-item">
-                <a class="nav-link" href="{% url 'myposts'  %}">
+                <a class="nav-link" href="{}">
                   <i class="material-icons opacity-6 me-2 text-md">note</i>
                   Gerir Postagens</a>
             </li>
@@ -51,7 +51,7 @@
           {% if request.user.is_authenticated %}
             <li class="nav-item ms-lg-auto">
               <a class="nav-link nav-link-icon me-2" 
-                href="{% url 'logout' %}">
+                href="{}">
                 <i class="fa fa-sign-out me-1"></i>
                 <p class="d-inline text-sm text-warning z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Clique aqui para se desconectar">Logout</p>
               </a>
@@ -59,7 +59,7 @@
           {% else %}
           <li class="nav-item ms-lg-auto">
             <a class="nav-link nav-link-icon me-2"
-               href="{% url 'login' %}" >
+               href="{}" >
               <i class="fa fa-sign-in me-1"></i>
               <p class="d-inline text-sm text-white bg-dark z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Get Sources" >Login</p>
             </a>

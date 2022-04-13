@@ -3,7 +3,6 @@
 {% block content %}
 {% load humanize %}
 
-
 <body class="presentation-page bg-gray-200">
 {% include 'includes/navigation-transparent.html' %}
 
@@ -22,47 +21,35 @@
       </div>
       <div class="row py-6">
 
-        {% for post in posts %}<!-- Postagens Publicadas -->
-             <div class="card w-90 mb-5 mx-auto">
-               <div class="card-body">
-                 <div class="col-sm-8 col-md-10 z-index-2 position-relative mx-auto">
-                   <h3 class="text-center">{{ post.title }}</h3>
-                   <div class="row mb-4">
-                     <div class="col-auto">
-                       <span class="h6">{{ post.author }}</span>
-                     </div>
-                     <div class="col-auto">
-                       <span>{{ post.date|naturaltime}}</span>
-                     </div>
-                   </div>
-                   <p class="text-lg mb-0">
-                     {{post.text }}
-                   </p>
-                     <div class="col-md-1 mt-3 right">
-                            {% if user.is_authenticated %}
-                            <div class="row">
-                                <div class="columnar col-md-6 mt-3">
-                                    <a href="{% url 'post_update' post.slug %}" >
-                                        <span class="fa fa-pencil" ></span>
-                                    </a>
-                                </div>
-                                <div class="columnar col-md-6 mt-3">
-                                    <a href="{% url 'post_delete' post.slug %}" class="confirm-delete" title="Delete" data-toggle="modal" data-target="#confirmDeleteModal" id="deleteButton{{post.slug}}">
-                                        <i class="fa fa-trash text-danger"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            {% else %}
-                            {% endif %}
-                        </div>
-                 </div>
-
-               </div>
-
-             </div>
-        {% endfor %}
-
-
+          <h1>Lista de Livros</h1>
+  {% if list_books %}
+  <ul>
+    {% for book in list_books %}
+      <li>
+        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+  {% block pagination %}
+          {% if is_paginated %}
+              <div class="pagination">
+                  <span class="page-links">
+                      {% if page_obj.has_previous %}
+                          <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                      {% endif %}
+                      <span class="page-current">
+                          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                      </span>
+                      {% if page_obj.has_next %}
+                          <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                      {% endif %}
+                  </span>
+              </div>
+          {% endif %}
+  {% endblock %}
       </div>
     </div>
   </section>
@@ -73,7 +60,5 @@
 
 </div>
     <!-- END Blogs w/ 4 cards w/ image & text & link -->
-
-
 
 {%endblock%}

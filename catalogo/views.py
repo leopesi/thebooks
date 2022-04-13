@@ -4,15 +4,14 @@ from .models import Book, Author, Genre
 
 def index(request):
     """View function for home page of site."""
-
-    # Generate counts of some of the main objects
     num_books = Book.objects.all().count()
-    # The 'all()' is implied by default.
     authors = Author.objects.all().count()
+    genre = Genre.objects.all().count()
 
     context = {
         'num_books': num_books,
         'num_authors': authors,
+        'num_genre': genre,
     }
 
     # Render the HTML template index.html with the data in the context variable
