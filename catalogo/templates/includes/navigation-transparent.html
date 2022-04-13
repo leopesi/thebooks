@@ -31,9 +31,9 @@
           {% if request.user.is_authenticated %}
 
           <li class="nav-item">
-                <a class="nav-link" href="{}">
+                <a class="nav-link" href="{% url 'book-create' %}">
                   <i class="material-icons opacity-6 me-2 text-md">article</i>
-                  Faça sua Postagens</a>
+                  Novo livro</a>
 
           </li>
 
@@ -51,7 +51,7 @@
           {% if request.user.is_authenticated %}
             <li class="nav-item ms-lg-auto">
               <a class="nav-link nav-link-icon me-2" 
-                href="{}">
+                href="{% url 'logout' %}">
                 <i class="fa fa-sign-out me-1"></i>
                 <p class="d-inline text-sm text-warning z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Clique aqui para se desconectar">Logout</p>
               </a>
@@ -59,7 +59,7 @@
           {% else %}
           <li class="nav-item ms-lg-auto">
             <a class="nav-link nav-link-icon me-2"
-               href="{}" >
+               href="{% url 'login' %}">
               <i class="fa fa-sign-in me-1"></i>
               <p class="d-inline text-sm text-white bg-dark z-index-1 font-weight-bold" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Get Sources" >Login</p>
             </a>
