@@ -3,7 +3,7 @@ from django.urls import path, include
 from .views import index, BookListView, BookDetailView, BookCreate, BookUpdate, BookDelete, AuthorListView, AuthorDetailView, AuthorCreate, AuthorUpdate, AuthorDelete
 urlpatterns = [
 
-    path('/', index, name='index'),
+    path('', index, name='index'),
 
     path('books/', BookListView.as_view(), name='books'),
     path('book/<int:pk>', BookDetailView.as_view(), name='book-detail'),
